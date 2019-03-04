@@ -12,11 +12,13 @@ class IngredientService {
     private lateinit var ingredientRepository: IngredientRepository
 
 
-    fun get(): List<Ingredient> {
-        return ingredientRepository.findAll()
+    fun get(ids: List<String>): Iterable<Ingredient> {
+        return if (ids.isEmpty()){
+            ingredientRepository.findAll()
+        }else{
+            ingredientRepository.findAllById(ids)
+        }
     }
 
-    fun add(ingredient: Ingredient): Ingredient {
-        return ingredientRepository.save(ingredient)
-    }
+    fun add(ingredient: Ingredient) = ingredientRepository.save(ingredient)
 }

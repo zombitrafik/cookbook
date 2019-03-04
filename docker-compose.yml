@@ -2,6 +2,30 @@ version: "2"
 
 services:
 
+  config:
+    build: config
+    restart: always
+    ports:
+      - 9001:8080
+
+  discovery:
+    build: eureka
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 9002:8080
+
+  gateway:
+    build: gateway
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 9003:8080
+
   ingredient:
     build: ingredient
     ports:

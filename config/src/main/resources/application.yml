@@ -11,4 +11,4 @@ eureka:
   client:
     region: default
     registry-fetch-interval-seconds: 5
-    service-url: http://eureka:8080/eureka/
+    service-url: http://discovery:8080/eureka/

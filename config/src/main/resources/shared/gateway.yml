@@ -1,61 +1,39 @@
-server:
-  port: 80
-
-security:
-  oauth2:
-    client:
-      clientId: Mainsoft-CRM
-      clientSecret: 857ce5ba-51b2-493f-8092-5d29125e830b
-      userAuthorizationUri: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/oauth/authorize
-      accessTokenUri: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/oauth/token
-      grant-type: authorization_code
-      scope: ui
-    resource:
-      user-info-uri: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/users/current
-
-
-zuul:
-  routes:
-    users-service:
-      path: /users/**
-      serviceId: user-service
-    project-service:
-      path: /projects/**
-      serviceId: project-service
-    auth-service:
-      path: /uaa/**
-      url: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}
-      stripPrefix: false
-      sensitiveHeaders:
-    user:
-      path: /user/**
-      url: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/users/current
-    sessions:
-      path: /sessions/**
-      url: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/users
-    security:
-      path: /security/**
-      url: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/users/security
-    auth_logout:
-      path: /auth_logout/**
-      url: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/auth_logout
-    drop_session:
-      path: /drop_session/**
-      url: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/drop_session
-    drop_all_session:
-      path: /drop_all_sessions/**
-      url: http://${AUTH_HOST:localhost}:${AUTH_PORT:5000}/uaa/drop_all_sessions
-
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          strategy: THREAD
-          thread:
-            timeoutInMilliseconds: 100000
+spring:
+  application:
+    name: gateway-service
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://discovery:1111/eureka
+    region: default
+    registryFetchIntervalSeconds: 5
+
+zuul:
+  routes:
+    ingredient-service:
+      path: /ingredients/**
+      sensitive-headers: Set-Cookie,Authorization
+    dish-service:
+      path: /dishes/**
+      sensitive-headers: Set-Cookie,Authorization
+    discovery-service:
+      path: /discovery/**
+      sensitive-headers: Set-Cookie,Authorization
+      url: http://discovery:8080
+
+hystrix:
+  command:
+    ingredient-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+    dish-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+    discovery-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000

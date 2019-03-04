@@ -9,4 +9,10 @@ services:
     environment:
      - "SPRING_PROFILES_ACTIVE=docker"
 
-  ingredient_mon
+  ingredient_mongo:
+    container_name: ingredient_mongo
+    image: mongo:4.0.5
+    ports:
+    - "9011:27017"
+    volumes:
+    - ./containerdata/mongo:/data

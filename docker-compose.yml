@@ -12,8 +12,7 @@ services:
     build: eureka
     restart: always
     depends_on:
-      config:
-        condition: service_healthy
+      - config
     ports:
       - 9002:8080
 
@@ -21,13 +20,16 @@ services:
     build: gateway
     restart: always
     depends_on:
-      config:
-        condition: service_healthy
+      - config
     ports:
       - 9003:8080
 
   ingredient:
     build: ingredient
+    restart: always
+    depends_on:
+      - config
+      - ingredient_mongo
     ports:
      - "9010:8080"
     environment:
@@ -35,7 +37,7 @@ services:
 
   ingredient_mongo:
     container_name: ingredient_mongo
-    image: mongo:4.0.5
+    image: healthcheck/mongo
     ports:
     - "9011:27017"
     volumes:

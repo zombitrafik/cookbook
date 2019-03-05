@@ -6,6 +6,8 @@ spring:
       server:
         native:
           search-locations: classpath:/shared
+  profiles:
+    active: native
 
 eureka:
   client:

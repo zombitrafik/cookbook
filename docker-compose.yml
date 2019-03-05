@@ -37,7 +37,7 @@ services:
 
   ingredient_mongo:
     container_name: ingredient_mongo
-    image: healthcheck/mongo
+    image: mongo:4.0.5
     ports:
     - "9011:27017"
     volumes:

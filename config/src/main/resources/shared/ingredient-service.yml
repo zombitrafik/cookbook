@@ -1,12 +1,6 @@
 spring:
-  data:
-    mongodb:
-      uri:  mongodb://localhost:9011/ingredient
   application:
     name: ingredient-service
-
-eureka:
-  client:
-    region: default
-    registryFetchIntervalSeconds: 5
-    serviceUrl: http://discovery:8080/eureka/
+  data:
+    mongodb:
+    uri:  mongodb://localhost:9011/ingredient

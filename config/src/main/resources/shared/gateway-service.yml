@@ -7,9 +7,11 @@ zuul:
     ingredient-service:
       path: /ingredients/**
       sensitive-headers: Set-Cookie,Authorization
+      url: http://ingredient:8080
     dish-service:
       path: /dishes/**
       sensitive-headers: Set-Cookie,Authorization
+      url: http://dish:8080
     discovery-service:
       path: /discovery/**
       sensitive-headers: Set-Cookie,Authorization

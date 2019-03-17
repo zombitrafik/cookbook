@@ -2,11 +2,43 @@ version: "2"
 
 services:
 
+  config:
+    build: config
+    restart: always
+    ports:
+      - 9001:8080
+
+  discovery:
+    build: eureka
+    restart: always
+    depends_on:
+      - config
+    ports:
+      - 9002:8080
+
+  gateway:
+    build: gateway
+    restart: always
+    depends_on:
+      - config
+    ports:
+      - 9003:8080
+
   ingredient:
     build: ingredient
+    restart: always
+    depends_on:
+      - config
+      - ingredient_mongo
     ports:
      - "9010:8080"
     environment:
      - "SPRING_PROFILES_ACTIVE=docker"
 
-  ingredient_mon
+  ingredient_mongo:
+    container_name: ingredient_mongo
+    image: mongo:4.0.5
+    ports:
+    - "9011:27017"
+    volumes:
+    - ./containerdata/mongo:/data

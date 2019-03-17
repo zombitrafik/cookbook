@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: gateway-service
+
+zuul:
+  routes:
+    ingredient-service:
+      path: /ingredients/**
+      sensitive-headers: Set-Cookie,Authorization
+      url: http://ingredient:8080
+    dish-service:
+      path: /dishes/**
+      sensitive-headers: Set-Cookie,Authorization
+      url: http://dish:8080
+    discovery-service:
+      path: /discovery/**
+      sensitive-headers: Set-Cookie,Authorization
+      url: http://discovery:8080
+
+hystrix:
+  command:
+    ingredient-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+    dish-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+    discovery-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000

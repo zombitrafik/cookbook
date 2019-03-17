@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+  profiles:
+    active: native
+
+eureka:
+  client:
+    region: default
+    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: http://discovery:8080/eureka/

@@ -1,0 +1,78 @@
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://${AUTH_HOST}:${AUTH_PORT}/uaa/users/current
+
+spring:
+  datasource:
+     url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+     username: ${DATABASE_USER}
+     password: ${DATABASE_PASSWORD}
+     driver-class-name: org.postgresql.Driver
+  jpa:
+      hibernate:
+        ddl-auto: update
+
+  cloud:
+        stream:
+          bindings:
+            user-added:
+              destination: crm.user.added
+              group: auth
+              binder: rabbit1
+              content-type: application/json
+            user-updated:
+              destination: crm.user.updated
+              group: auth
+              binder: rabbit1
+              content-type: application/json
+            user-group-added:
+              destination: crm.group.added
+              group: auth
+              binder: rabbit1
+              content-type: application/json
+            user-group-updated:
+              destination: crm.group.updated
+              group: auth
+              binder: rabbit1
+              content-type: application/json
+          binders:
+            rabbit1:
+              type: rabbit
+              environment:
+                spring:
+                  rabbitmq:
+                    host: rabbitmq
+                    port: 5672
+                    username: guest
+                    password: guest
+  redis:
+    database: 0
+    password: ""
+    host: redis
+    port: 6379
+  session:
+    store-type: redis
+    redis:
+      namespace: authSessions
+
+server:
+  context-path: /uaa
+  port: 5000
+  session:
+    timeout: 86400
+mainsoftCrmDetails:
+  client-id: Mainsoft-CRM
+  client-secret: 857ce5ba-51b2-493f-8092-5d29125e830b
+  scope: ui
+  authorized-grant-types: authorization_code, refresh_token
+  auto-approve-scopes: true
+
+testProjectDetails:
+  client-id: TestProject
+  client-secret: TestSecret
+  scope: ui
+  authorized-grant-types: authorization_code, refresh_token
+  auto-approve-scopes: true
+
+  #access-token-validity-seconds: 600000

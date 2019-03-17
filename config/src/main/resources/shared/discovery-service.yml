@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: discovery-service
+
+eureka:
+  instance:
+    hostname: localhost
+    register-with-eureka: false
+    fetch-registry: false

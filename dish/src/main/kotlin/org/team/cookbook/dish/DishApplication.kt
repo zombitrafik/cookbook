@@ -2,8 +2,10 @@ package org.team.cookbook.dish
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 
 @SpringBootApplication
+@EnableEurekaClient
 class DishApplication
 
 fun main(args: Array<String>) {

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: dish-service
+
+  cloud:
+    config:
+      uri: http://config:8080
+      fail-fast: true

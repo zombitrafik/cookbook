@@ -41,4 +41,23 @@ services:
     ports:
     - "9011:27017"
     volumes:
-    - ./containerdata/mongo:/data
+    - ./containerdata/mongo/ingredient:/data
+
+  dish:
+    build: dish
+    restart: always
+    depends_on:
+      - config
+      - dish_mongo
+    ports:
+     - "9020:8080"
+    environment:
+     - "SPRING_PROFILES_ACTIVE=docker"
+
+  dish_mongo:
+    container_name: dish_mongo
+    image: mongo:4.0.5
+    ports:
+    - "9021:27017"
+    volumes:
+    - ./containerdata/mongo/dish:/data

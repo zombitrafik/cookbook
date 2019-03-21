@@ -4,5 +4,8 @@ spring:
 
   cloud:
     config:
-      uri: http://config:8080
+      uri: http://localhost:9001
       fail-fast: true
+
+server:
+  port: 8090

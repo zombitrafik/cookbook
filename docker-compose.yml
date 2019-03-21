@@ -54,7 +54,7 @@ services:
     environment:
      - "SPRING_PROFILES_ACTIVE=docker"
 
-  dish_mongo:
+  dish_mongo:
     container_name: dish_mongo
     image: mongo:4.0.5
     ports:

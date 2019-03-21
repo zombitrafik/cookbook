@@ -11,7 +11,6 @@ class DishService {
     @Autowired
     private lateinit var dishRepository: DishRepository
 
-
     fun get(): List<Dish> {
         return dishRepository.findAll()
     }

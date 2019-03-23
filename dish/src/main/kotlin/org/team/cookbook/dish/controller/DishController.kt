@@ -1,10 +1,7 @@
 package org.team.cookbook.dish.controller
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.team.cookbook.dish.converter.DishToInfoDTOConverter
 import org.team.cookbook.dish.dto.DishInfoDTO
 import org.team.cookbook.dish.model.Dish
@@ -20,7 +17,12 @@ class DishController{
     @Autowired
     private lateinit var dishToDTOConverter: DishToInfoDTOConverter
 
-    @GetMapping
+    @GetMapping("/list")
+    fun getList(@RequestParam ids:List<String>): List<DishInfoDTO> {
+        return dishToDTOConverter.convert(dishService.get(ids))
+    }
+
+    @GetMapping()
     fun getList(): List<DishInfoDTO> {
         return dishToDTOConverter.convert(dishService.get())
     }

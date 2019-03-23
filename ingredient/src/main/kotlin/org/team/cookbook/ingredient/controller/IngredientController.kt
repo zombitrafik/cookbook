@@ -13,9 +13,14 @@ class IngredientController {
     @Autowired
     private lateinit var ingredientService: IngredientService
 
-    @GetMapping
+    @GetMapping("/list")
     fun getList(@RequestParam ids:List<String>): List<Ingredient> {
         return ingredientService.get(ids)
+    }
+
+    @GetMapping
+    fun getList(): List<Ingredient> {
+        return ingredientService.get()
     }
 
     @GetMapping("/{id}")

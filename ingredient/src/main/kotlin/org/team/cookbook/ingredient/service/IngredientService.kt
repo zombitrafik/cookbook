@@ -18,7 +18,7 @@ class IngredientService {
     }
 
     fun get(): List<Ingredient> {
-        return ingredientRepository.findAll();
+        return ingredientRepository.findAll()
     }
 
     fun get(id: String): Optional<Ingredient> {

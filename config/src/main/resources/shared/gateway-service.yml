@@ -12,6 +12,10 @@ zuul:
       path: /dishes/**
       sensitive-headers: Set-Cookie,Authorization
       url: http://dish:8080
+    menu-service:
+      path: /menus/**
+      sensitive-headers: Set-Cookie,Authorization
+      url: http://dish:8080
     discovery-service:
       path: /discovery/**
       sensitive-headers: Set-Cookie,Authorization
@@ -25,6 +29,11 @@ hystrix:
           thread:
             timeoutInMilliseconds: 600000
     dish-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+    menu-service:
       execution:
         isolation:
           thread:

@@ -63,3 +63,22 @@ services:
     - "9021:27017"
     volumes:
     - ./containerdata/mongo/dish:/data
+
+  menu:
+    build: menu
+    restart: always
+    depends_on:
+      - config
+      - menu_mongo
+    ports:
+     - "9030:8080"
+    environment:
+     - "SPRING_PROFILES_ACTIVE=docker"
+
+  menu_mongo:
+    container_name: menu_mongo
+    image: mongo:4.0.5
+    ports:
+    - "9031:27017"
+    volumes:
+    - ./containerdata/mongo/menu:/data

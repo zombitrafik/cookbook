@@ -3,51 +3,27 @@ import Vue from 'vue';
 
 Vue.use(VueRouter);
 
-import DishesComponent from '../components/dishes/Dishes.vue';
-import EditDishComponent from '../components/dishes/EditDish.vue';
-import CreateDishComponent from '../components/dishes/CreateDish.vue';
-import IngredientsComponent from '../components/ingredients/Ingredients.vue';
-import CreateIngredientComponent from '../components/ingredients/CreateIngredient.vue';
-import EditIngredientComponent from '../components/ingredients/EditIngredient.vue';
+import MenuComponent from '../components/menu/Menu.vue';
+import OrderComponent from '../components/order/Order.vue';
 
 const routes = [
     {
-        path: '/dishes',
-        name: 'dishes',
-        component: DishesComponent
+        path: '/menu',
+        name: 'menu',
+        component: MenuComponent
     },
     {
-        path: '/dishes/:id/edit',
-        name: 'dishes.edit',
-        component: EditDishComponent
-    },
-    {
-        path: '/dishes/create',
-        name: 'dishes.create',
-        component: CreateDishComponent
-    },
-    {
-        path: '/ingredients',
-        name: 'ingredients',
-        component: IngredientsComponent
-    },
-    {
-        path: '/ingredients/create',
-        name: 'ingredients.create',
-        component: CreateIngredientComponent
-    },
-    {
-        path: '/ingredients/:id/edit',
-        name: 'ingredients.edit',
-        component: EditIngredientComponent
+        path: '/order/:menuId',
+        name: 'order',
+        component: OrderComponent
     },
     {
         path: '/',
-        redirect: {name: 'dishes'}
+        redirect: {name: 'menu'}
     },
     {
         path: "*",
-        redirect: {name: 'dishes'}
+        redirect: {name: 'menu'}
     }
 ];
 

@@ -1,0 +1,68 @@
+body {
+	color: floralwhite;
+	background: url(./images/fon.jpg) repeat-y;
+    border-top: 5px solid #7e7e7e;
+    width: 70%;
+    font-family: "Monotype Corsiva";
+    font-size: 24px;
+    shadow: 4px 4px 4px #aaa;
+    margin: 0 auto;   
+    display: relative;		
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%; 
+    height: 100%;
+    text-align: center;
+    border: 1px solid grey;
+    border-top: 3px solid grey;
+}
+
+th {border: 1px solid grey;}
+
+td {border: 1px solid grey;}
+
+th, td {padding: 10px 15px;}
+
+#main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    flex-basis: 10px;
+    min-height: 500px;
+    background: linear-gradient(45deg, rgba(103, 0, 31, .8), rgba(34, 101, 163, .5)), url(https://html5book.ru/wp-content/uploads/2016/12/photo-8.jpg); 
+    background-size: cover;
+    /* border-radius: 15px;  */
+}
+
+#main:hover {
+    outline: 1px solid rgb(170, 96, 96); 
+   }
+
+#ingredients {
+    width: 50%;
+    margin: 20px;
+}
+
+#card {
+    width: 50%;
+    margin: 20px;
+}
+
+#button {
+    color: #3B0B39; 
+    border-radius: 10px;
+    text-decoration: none; 
+    user-select: none; 
+    background: #F5A9F2;
+    padding: .7em 1.5em;
+    outline: none; 
+    width: 150px;
+    cursor: pointer;
+}

@@ -1,0 +1,92 @@
+body {
+	color: #3B0B24;
+	border-top: 5px solid #7e7e7e;
+    width: 60%;
+    
+    font-family: "Monotype Corsiva";
+    font-size: 20px;
+    margin:  auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+main {
+    width: 100%;
+    height: 900px;
+    background-color: rgb(250, 245, 240);
+	background: url(fon.jpg);
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-content: space-between;
+    background-color: antiquewhite;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    width: 500px;
+    height: 350px;
+    border-radius: 40px;
+    margin: auto;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+}
+
+table {
+    padding: 10px;
+    border-spacing: 20px;
+    font-family: "Gill Sans Extrabold", cursive;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+input {
+    border-radius: 5px;
+    height: 30px;
+    width: 250px;
+}
+
+caption {
+    font-family: annabelle, cursive;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 10px; 
+    color: rgb(201, 109, 124);
+    text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+   }
+
+button {
+    margin: 40px 20px;
+    padding: 5px 5px;
+    border-radius: 10px;
+    border: 2px solid;
+    font: 16px 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .5s;
+
+    color: rgb(185, 80, 103);
+    border-color:rgb(185, 80, 103);
+    background: linear-gradient(left, #A3F7BF, #A3F7BF) no-repeat;
+    background-size: 0% 100%;
+  }
+
+#button {
+    margin: auto;
+    width: 30%; 
+}

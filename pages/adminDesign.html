@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel = 'stylesheet' href = '../css/adnimDesign.css'>
+    <title>Редактировать блюдо</title>
+</head>
+<body>
+    <div id = 'container'>
+        <header id = 'header'>
+                <h1 style = 'text-align: center'>Редактировать блюдо</h1>
+        </header>
+
+        <main>
+            <figure  class = 'foto'>
+                <img src = '../images/pelmeni/pelmeni.jpg'>
+                <a href = './editFoto.html'><button class = 'button'>Редактировать фотографию</button></a>
+            </figure>
+            
+            <section>
+                <h1>Пельмени</h1>
+                <table id = 'table-specification'> 
+                    <tr>
+                        <td>Описание</td>
+                        <td>Вкусные</td>
+                    </tr>
+                    <tr>
+                        <td>Калории</td>
+                        <td>42 калл</td>
+                    </tr>
+                </table>
+                <a href = '../pages/editInfoDish.html'> <button class = 'button'>Редактировать</button></a>
+            </section>
+
+            <section>
+                <h1>Вам понадобится</h1>
+                <div class = 'ingredients'>
+                    <div>
+                        <img src = '../images/pelmeni/testo.jpg'>
+                        <figcaption>500 г</figcaption>
+                    </div>
+                    <div>
+                        <img src = '../images/pelmeni/farsh.jpg'>
+                        <figcaption>50 г</figcaption>
+                    </div>
+                </div>
+                <a href = '../pages/addIngredient.html'> <button class = 'button'>Добавить ингредиент</button></a>
+            </section>
+            
+            <section id = 'sectionCook'>
+                <h1>Способ приготовления</h1>
+                <p>Разогрейте сковороду и обжарьте на масле лук с морковью. Добавьте томатную пасту, соль, специи и немного воды. </p>
+                <a href = '../pages/editCooking.html'><button class = 'button'>Редактировать способ приготовления</button></a>
+                <a href = '../index.html'><input type = 'submit' value = 'Сохранить изменения' class = 'button'></a>
+            </section>
+        </main>
+
+        <footer id = 'footer'>
+            <div class="footer-bg">
+                <p>Главная | <a href= «#»> Кулинарные новости </a> | <a href= «#»> Статьи </a> | <a href= «#»>Аналитика</a> | <a href= «#» >Шеф-повара мира</a> | </p>
+                <p>Copyright © 2019 </p>
+            </div>
+        </footer>
+    </div>    
+    </body>
+</html>

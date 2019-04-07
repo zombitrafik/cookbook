@@ -1,0 +1,108 @@
+body {
+	color: #3B0B24;
+    border-top: 5px solid #7e7e7e;
+    width: 70%;
+    font-family: "Monotype Corsiva";
+    font-size: 24px;
+    margin: auto; 
+}
+
+header {
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.book {
+    text-decoration: underline;
+}
+
+p {
+	margin: 20px 0;
+}
+
+header img {
+    border-radius: 30px;
+}
+
+section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin: 40px;
+
+    /* background-color: #FBEFFB; */
+    background-image: url(../images/fon6.jpg);
+    background-size: auto;
+    border-radius: 30px;
+}
+
+section img {
+    width: 170px;
+    height: 140px;
+    border-radius: 25px;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin: auto;
+    
+}
+
+.ingredients div {
+    width: 200px;
+}
+
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+button {
+  margin: 20px 25px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid;
+  font: 14px 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  transition: all .5s;
+  width: 15%;
+
+}
+
+.buttonCook {
+  color: #B40431;
+  border-color: #F7819F;
+  background: linear-gradient(left, #A3F7BF, #A3F7BF) no-repeat;
+  background-size: 0% 100%;
+}
+
+#footer {
+    background: #F2F2F2;
+    color: #2E2E2E;
+    border-radius: 30px;
+    padding: 5px; clear : both;
+    margin-top: 40px;
+}
+
+#footer a {
+    color: #2E2E2E;
+}
+
+#footer a:hover {
+    color: #F5A9BC;
+}
+
+#footer p {
+    padding: 2px;
+    text-align: center;
+}

@@ -1,0 +1,62 @@
+body {
+	color: #610B4B;
+	border-top: 5px solid #7e7e7e;
+    width: 70%;
+    font-family: "Monotype Corsiva";
+    font-size: 20px;
+    margin: auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+main {
+    /* margin: 30px;
+    border-radius: 25px; */
+    width: 70%;
+    /* background-color: rgb(250, 245, 240); */
+    background: url(../images/fon5.jpg) no-repeat;
+    background-size: 100%;
+    width:100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: antiquewhite;
+}
+
+img {
+    width: 550px;
+    height: 400px;
+    border-radius: 40px;
+    margin: auto;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;   
+}
+
+button {
+    margin: 10px 20px;
+    padding: 5px 5px;
+    border-radius: 10px;
+    border: 2px solid;
+    font: 16px 'Open Sans', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .5s;
+    /* width: 50%; */
+
+    color: #610B4B;
+    border-color:#610B4B;
+    background: linear-gradient(left, #A3F7BF, #A3F7BF) no-repeat;
+    background-size: 0% 100%;
+  }

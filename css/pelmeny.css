@@ -1,0 +1,141 @@
+body {
+	color: #3B0B24;
+	/* font: 12px Tahoma, sans-serif; */
+    background: url(./images/fon.jpg) repeat-y;
+    width: 70%;
+    font-family: "Monotype Corsiva";
+    font-size: 22px;
+    margin: 0 auto; 
+	
+}
+
+header {
+    position: relative;
+    min-height: 50px;
+    padding: 20px 0;
+    /* border: 1px solid black; */
+}
+
+img {
+    width: 450px;
+    height: 300px;
+}
+
+.specification {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border: 1px solid #F5BCA9;
+    margin: 20px;
+    border-spacing: 30px;
+}
+
+.close {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    }
+.close:hover {
+    opacity: 1;
+}
+.close:before, .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+}
+.close:before {
+    transform: rotate(45deg);
+}
+.close:after {
+    transform: rotate(-45deg);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    background-color: #FBEFFB;
+    border-radius: 30px; 
+}
+
+img {
+    border-radius: 20px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin: auto;
+    
+}
+
+.ingredients img {
+    width: 160px;
+    height: 130px;
+    border-radius: 25px;
+
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.ingredients img:hover {
+    -webkit-filter: brightness(60%);
+    margin: auto;
+}
+
+#cooking-method {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-content: center; */
+    margin: auto;
+    width: 80%;
+}
+
+.submit {
+    display: flex;
+    margin : auto;
+    padding: 40px;
+}
+
+ #button {
+     cursor: pointer;
+    margin : auto;  
+    color: #fff; /* цвет текста */
+    border-radius: 10px;
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: #CC9999	   ; /* фон кнопки */
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */ 
+    width: 200px;
+    /* border: 1px solid black; */
+} 
+
+

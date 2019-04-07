@@ -1,0 +1,134 @@
+body {
+	color: #3B0B24;
+	border-top: 5px solid #7e7e7e;
+    width: 80%;
+    font-family: "Monotype Corsiva";
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto; 
+}
+
+#container {
+	/* margin-top: 10px; */
+    border-radius: 25px;
+    width: 70%;
+    background-color: rgb(250, 245, 240);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto; 
+}
+
+header {
+    padding: 20px 0;
+}
+
+p {
+	margin: 20px 0;
+}
+
+h1 {
+    font-size:2em;
+}
+
+main {
+    /* max-width: 960px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+    border-radius: 30px;
+}
+
+table {
+    border-spacing: 30px;
+}
+
+.foto  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.foto img {
+    width: 60%;
+    height: 60%;
+    border-radius: 35px;
+}
+
+hr {
+    border: none; 
+    background-color: rgb(204, 115, 115); 
+    color: rgb(204, 115, 115); 
+    height: 2px; 
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin: auto;
+    
+}
+
+.ingredients img {
+    width: 150pxd;
+    height: 120px;
+    border-radius: 25px;
+}
+
+#button {
+    margin: auto;
+}
+
+.button {
+    margin-top: 40px;
+    padding: 5px 5px;
+    border-radius: 10px;
+    border: 2px solid;
+    font: 16px 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .5s;
+
+    color: rgb(185, 80, 103);
+    border-color:rgb(185, 80, 103);
+    background: linear-gradient(left, #A3F7BF, #A3F7BF) no-repeat;
+    background-size: 0% 100%;
+}
+
+#footer {
+    background-color: rgb(250, 245, 240);
+    color: #2E2E2E;
+    /* border-radius: 30px; */
+    padding: 5px; clear : both;
+}
+
+#footer a {
+    color: #2E2E2E;
+}
+
+#footer a:hover {
+    color: #F5A9BC;
+}
+
+#footer p {
+    padding: 2px;
+    text-align: center;
+}

@@ -26,34 +26,32 @@
 </template>
 
 <script lang="ts">
-    import Vue from "vue";
+    import { Vue, Component } from "vue-property-decorator";
+    @Component
+    export default class EditIngredient extends Vue {
+        id: String | null = null;
+        name: String = '';
+        description: String = '';
+        calories: Number = 0;
 
-    export default Vue.extend({
-        data() {
-            return {
-                name: '',
-                description: '',
-                calories: 0
-            }
-        },
-        methods: {
-            async save() {
-                const ingredient = {
-                    name: this.name,
-                    description: this.description,
-                    calories: this.calories
-                };
-                await this.$store.dispatch('UPDATE_INGREDIENT', ingredient);
-                this.$router.push({name: 'ingredients'});
-            }
-        },
+        async save() {
+            const ingredient = {
+                name: this.name,
+                description: this.description,
+                calories: this.calories
+            };
+            await this.$store.dispatch('UPDATE_INGREDIENT', ingredient);
+            this.$router.push({name: 'ingredients'});
+        }
         async mounted() {
-            const ingredient = await this.$store.dispatch('GET_INGREDIENT_BY_ID', this.$route.params.id);
+            const {id} = this.$route.params;
+            const ingredient = await this.$store.dispatch('GET_INGREDIENT_BY_ID', id);
+            this.id = ingredient.id;
             this.name = ingredient.name;
             this.description = ingredient.description;
             this.calories = ingredient.calories;
         }
-    });
+    }
 </script>
 
 <style>

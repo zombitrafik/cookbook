@@ -17,6 +17,7 @@ let v = new Vue({
     <div>
     <button class="button" @click="dishes">Dishes</button>
     <button class="button" @click="ingredients">Ingredients</button>
+    <button class="button" @click="products">Products</button>
     <router-view></router-view>
     </div>
     `,
@@ -26,6 +27,9 @@ let v = new Vue({
         },
         ingredients() {
             this.$router.push({name: 'ingredients'});
+        },
+        products() {
+            this.$router.push({name: 'products'});
         }
     },
     components: {

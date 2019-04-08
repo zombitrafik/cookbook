@@ -1,7 +1,7 @@
 <template>
     <div id = 'container'>
         <header id = 'header'>
-            <h1 style = 'text-align: center'>Edit dish</h1>
+            <h1 style = 'text-align: center'>Create product</h1>
         </header>
 
         <main>
@@ -18,36 +18,28 @@
                         <td><textarea cols="30" rows="10" v-model="description"></textarea></td>
                     </tr>
                     <tr>
-                        <td>Calories</td>
-                        <td><input type="number" v-model="calories"> kl.</td>
+                        <td>Weight</td>
+                        <td><input type="number" v-model="weight"> gr.</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><input type="number" v-model="price"> $</td>
+                    </tr>
+                    <tr>
+                        <td>Ingredient</td>
+                        <td>
+                            <select v-model="ingredient">
+                                <option v-for="ingredient in ingredients" v-bind:value="ingredient.id">
+                                    {{ ingredient.name }}
+                                </option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
             </section>
 
-            <section>
-                <h1>You will need:</h1>
-                <div class = 'ingredients'>
-                    <div v-for="ingredient in ingredients">
-                        <img v-bind:src="ingredient.image">
-                        <figcaption>{{ingredient.name}}</figcaption>
-                        <figcaption>Weight <input type="number" v-model="ingredient.weight"> gr.</figcaption>
-                        <span @click="removeIngredient(ingredient)" style="color: red;">x</span>
-                    </div>
-                </div>
-                <button class = 'button' @click="openIngredientsPopup">Add ingredient</button>
-                <div class = 'ingredients' v-if="ingredientsPopup">
-                    <div v-for="ingredient in restIngredients"  @click="addIngredient(ingredient)">
-                        <img v-bind:src="ingredient.image">
-                        <figcaption>{{ingredient.name}}</figcaption>
-                        <figcaption>{{ingredient.description}}</figcaption>
-                    </div>
-                </div>
-            </section>
-
             <section id = 'sectionCook'>
-                <h1>Preparation instructions</h1>
-                <textarea cols="30" rows="10" v-model="preparationInstructions"></textarea>
-                <input type = 'submit' value = 'Save' class = 'button' @click="save">
+                <input type = 'submit' value = 'Create' class = 'button' @click="create">
             </section>
         </main>
     </div>
@@ -56,65 +48,38 @@
 <script lang="ts">
     import { Vue, Component } from "vue-property-decorator";
     @Component
-    export default class EditDish extends Vue {
-        id: String | null = null;
+    export default class CreateProduct extends Vue {
         image: String | null = null;
         name: String = '';
         description: String = '';
-        calories: Number = 0;
-        preparationInstructions: String = '';
-        ingredients: any[] = [];
-        restIngredients: any[] = [];
-        ingredientsPopup: boolean = false;
+        weight: Number = 0;
+        price: Number = 0;
+        ingredient: String | null = null;
 
-        removeIngredient(ingredient: any) {
-            this.ingredients.splice(this.ingredients.indexOf(ingredient), 1);
+        get ingredients() {
+            return this.$store.state.ingredients;
         }
-        openIngredientsPopup() {
-            const selectedIngredientsIds = this.ingredients.map((ingredient: any) => ingredient.id);
-            this.restIngredients = this.$store.state.ingredients
-                .filter((ingredient: any) => selectedIngredientsIds.indexOf(ingredient.id) === -1);
 
-            if(this.removeIngredient.length > 0) {
-                this.ingredientsPopup = true;
+        async create() {
+            const product = {
+                name: this.name,
+                image: this.image,
+                description: this.description,
+                weight: this.weight,
+                price: this.price,
+                ingredient: this.ingredient
+            };
+            await this.$store.dispatch('CREATE_PRODUCT', product);
+            this.$router.push({name: 'products'});
+        }
+
+        async mounted() {
+            await this.$store.dispatch('GET_INGREDIENTS');
+            if(this.ingredients.length > 0) {
+                this.ingredient = this.ingredients[0].id;
             }
         }
-        addIngredient(ingredient: any) {
-            this.ingredients.push(ingredient);
-            this.ingredientsPopup = false;
-        }
-        async save() {
-            const dish = {
-                id: this.id,
-                image: this.image,
-                name: this.name,
-                description: this.description,
-                calories: this.calories,
-                preparationInstructions: this.preparationInstructions,
-                ingredients: this.ingredients.map((ingredient: any) => {
-                    return {
-                        id: ingredient.id,
-                        count: 0,
-                        weight: 0
-                    }
-                })
-            };
-            await this.$store.dispatch('UPDATE_DISH', dish);
-            this.$router.push({name: 'dishes'});
-        }
-        async mounted() {
-            this.$store.dispatch('GET_INGREDIENTS');
-            const dish = await this.$store.dispatch('GET_DISH_BY_ID', this.$route.params.id);
-            this.id = dish.id;
-            this.image = dish.image;
-            this.name = dish.name;
-            this.description = dish.description;
-            this.calories = dish.calories;
-            this.preparationInstructions = dish.preparationInstructions;
-            this.ingredients = dish.ingredients;
-        }
     }
-
 </script>
 
 <style>

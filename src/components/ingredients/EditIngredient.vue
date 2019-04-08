@@ -42,6 +42,8 @@
 
         async save() {
             const ingredient = {
+                id: this.id,
+                image: this.image,
                 name: this.name,
                 description: this.description,
                 calories: this.calories

@@ -3,4 +3,4 @@ spring:
     name: dish-service
   data:
     mongodb:
-    uri:  mongodb://localhost:9021/dish
+      uri: mongodb://localhost:9021/dish

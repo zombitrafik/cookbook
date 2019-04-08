@@ -3,4 +3,4 @@ spring:
     name: menu-service
   data:
     mongodb:
-    uri:  mongodb://localhost:9031/menu
+      uri: mongodb://localhost:9031/menu

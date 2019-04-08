@@ -3,4 +3,4 @@ spring:
     name: ingredient-service
   data:
     mongodb:
-    uri:  mongodb://localhost:9011/ingredient
+      uri: mongodb://localhost:9011/ingredient

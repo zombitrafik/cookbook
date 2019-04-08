@@ -1,9 +1,8 @@
 <template>
     <div>
-        <h2>Ingredients mapping</h2>
-        TODO map ingredients to products
-        <div>
-            <button @click="order">Next</button>
+        <h2 style="text-align: center">Ingredients mapping</h2>
+        <div style="text-align: center;">
+            <button class="pay" @click="pay" v-bind:disabled="true">Pay</button>
         </div>
     </div>
 </template>
@@ -14,8 +13,8 @@
     @Component
     export default class Order extends Vue {
 
-        async order() {
-            //TODO
+        async pay() {
+            console.log('pay');
         }
 
         async mounted() {
@@ -29,5 +28,8 @@
 </script>
 
 <style>
-
+    .pay:disabled {
+        border-color: silver;
+        color: silver;
+    }
 </style>

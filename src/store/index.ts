@@ -27,8 +27,11 @@ export default {
             return menu.id;
         },
         async GET_MENU_BY_ID(context: any, id: any): Promise<any> {
-            const {data: menu} = await Axios.get(`http://82.209.201.172:9003/menus?ids=${id}`);
-            return menu[0];
+            const {data: menu} = await Axios.get(`http://82.209.201.172:9003/menus/${id}`);
+            return menu;
+        },
+        async ADD_DISH_TO_MENU(context: any, payload: any): Promise<any> {
+            await Axios.post(`http://82.209.201.172:9003/menus/${payload.menuId}/${payload.dishId}`);
         }
     }
 };

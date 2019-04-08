@@ -95,7 +95,7 @@
                     return {
                         id: ingredient.id,
                         count: 0,
-                        weight: 0
+                        weight: ingredient.weight
                     }
                 })
             };

@@ -16,6 +16,10 @@ zuul:
       path: /menus/**
       sensitive-headers: Set-Cookie,Authorization
       serviceId: menu-service
+    product-service:
+      path: /products/**
+      sensitive-headers: Set-Cookie,Authorization
+      serviceId: product-service
     discovery-service:
       path: /discovery/**
       sensitive-headers: Set-Cookie,Authorization

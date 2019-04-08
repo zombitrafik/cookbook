@@ -23,15 +23,15 @@ class DishController{
         return dishToDTOConverter.convert(dishService.get(ids))
     }
 
-    @GetMapping("/{dishId}")
-    fun getList(@PathVariable dishId:String): DishInfoDTO {
-        return dishToDTOConverter.convert(dishService.get(dishId)
-                .orElseThrow { RuntimeException("dish not found") })
-    }
-
     @GetMapping("/")
     fun getList(): List<DishInfoDTO> {
         return dishToDTOConverter.convert(dishService.get())
+    }
+
+    @GetMapping("/{dishId}")
+    fun get(@PathVariable dishId:String): DishInfoDTO {
+        return dishToDTOConverter.convert(dishService.get(dishId)
+                .orElseThrow { RuntimeException("dish not found") })
     }
 
     @PostMapping("/")

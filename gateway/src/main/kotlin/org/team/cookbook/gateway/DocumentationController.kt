@@ -18,6 +18,7 @@ class DocumentationController : SwaggerResourcesProvider {
         resources.add(swaggerResource("ingredient-service", "/ingredients/v2/api-docs", "2.0"))
         resources.add(swaggerResource("dish-service", "/dishes/v2/api-docs", "2.0"))
         resources.add(swaggerResource("menu-service", "/menus/v2/api-docs", "2.0"))
+        resources.add(swaggerResource("product-service", "/products/v2/api-docs", "2.0"))
         return resources
     }
 

@@ -36,7 +36,13 @@ class DishController{
 
     @PostMapping("/")
     fun add(@RequestBody dish: Dish): DishInfoDTO {
-        return dishToDTOConverter.convert(dishService.add(dish))
+        return dishToDTOConverter.convert(dishService.save(dish))
+    }
+    
+    @PutMapping("/{dishId}")
+    fun update(@PathVariable dishId: String, @RequestBody dish: Dish): DishInfoDTO {
+        dish.id=dishId
+        return dishToDTOConverter.convert(dishService.save(dish))
     }
 }
 

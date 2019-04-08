@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import org.team.cookbook.ingredient.model.Ingredient
 import org.team.cookbook.ingredient.service.IngredientService
-import java.lang.IllegalArgumentException
 
 
 @RestController
@@ -31,7 +30,13 @@ class IngredientController {
 
     @PostMapping("/")
     fun add(@RequestBody ingredient: Ingredient): Ingredient {
-        return ingredientService.add(ingredient)
+        return ingredientService.save(ingredient)
+    }
+
+    @PutMapping("/{ingredientId}")
+    fun update(@PathVariable ingredientId: String, @RequestBody ingredient: Ingredient): Ingredient {
+        ingredient.id=ingredientId
+        return ingredientService.save(ingredient)
     }
 
 

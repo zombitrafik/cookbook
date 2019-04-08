@@ -27,12 +27,19 @@ class MenuController{
 
     @PostMapping("/")
     fun add(@RequestBody menu: Menu): MenuInfoDTO {
-        return converter.convert(menuService.add(menu))
+        return converter.convert(menuService.save(menu))
     }
 
     @PostMapping("/{menuId}/{dishId}")
     fun addDish(@PathVariable menuId:String, @PathVariable dishId: String){
         menuService.addDish(menuId, dishId)
+    }
+
+
+    @PutMapping("/{menuId}")
+    fun update(@PathVariable menuId: String, @RequestBody menu: Menu): MenuInfoDTO {
+        menu.id=menuId
+        return converter.convert(menuService.save(menu))
     }
 }
 

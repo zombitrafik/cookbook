@@ -25,7 +25,7 @@ class DishService {
     }
 
 
-    fun add(dish: Dish): Dish {
+    fun save(dish: Dish): Dish {
         return dishRepository.save(dish)
     }
 }

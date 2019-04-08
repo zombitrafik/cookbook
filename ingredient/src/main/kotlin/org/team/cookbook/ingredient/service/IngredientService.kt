@@ -25,7 +25,7 @@ class IngredientService {
         return ingredientRepository.findById(id)
     }
 
-    fun add(ingredient: Ingredient): Ingredient {
+    fun save(ingredient: Ingredient): Ingredient {
         return ingredientRepository.save(ingredient)
     }
 }

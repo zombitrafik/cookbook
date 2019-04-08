@@ -17,7 +17,7 @@ class MenuService {
         return menuRepository.findById(menuId)
     }
 
-    fun add(menu: Menu): Menu {
+    fun save(menu: Menu): Menu {
         return menuRepository.save(menu)
     }
 

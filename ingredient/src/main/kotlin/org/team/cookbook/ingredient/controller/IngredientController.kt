@@ -18,18 +18,12 @@ class IngredientController {
         return ingredientService.get(ids)
     }
 
-    @GetMapping
+    @GetMapping("/")
     fun getList(): List<Ingredient> {
         return ingredientService.get()
     }
 
-    @GetMapping("/{id}")
-    fun get(@PathVariable id: String): Ingredient {
-        return ingredientService.get(id)
-                .orElseThrow { IllegalArgumentException("ingredient with id $id not found") }
-    }
-
-    @PostMapping
+    @PostMapping("/")
     fun add(@RequestBody ingredient: Ingredient): Ingredient {
         return ingredientService.add(ingredient)
     }

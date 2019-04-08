@@ -7,39 +7,32 @@ zuul:
     ingredient-service:
       path: /ingredients/**
       sensitive-headers: Set-Cookie,Authorization
-      url: http://ingredient:8080
+      serviceId: ingredient-service
     dish-service:
       path: /dishes/**
       sensitive-headers: Set-Cookie,Authorization
-      url: http://dish:8080
+      serviceId: dish-service
     menu-service:
       path: /menus/**
       sensitive-headers: Set-Cookie,Authorization
-      url: http://dish:8080
+      serviceId: menu-service
     discovery-service:
       path: /discovery/**
       sensitive-headers: Set-Cookie,Authorization
       url: http://discovery:8080
+  host:
+    connect-timeout-millis: 600000
+    socket-timeout-millis: 600000
+
 
 hystrix:
   command:
-    ingredient-service:
+    default:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 600000
-    dish-service:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 600000
-    menu-service:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 600000
-    discovery-service:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 600000
+          timeoutInMilliseconds: 600000
+
+ribbon:
+  ConnectTimeout: 600000
+  ReadTimeout: 600000

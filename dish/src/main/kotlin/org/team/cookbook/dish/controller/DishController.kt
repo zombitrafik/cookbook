@@ -22,12 +22,12 @@ class DishController{
         return dishToDTOConverter.convert(dishService.get(ids))
     }
 
-    @GetMapping()
+    @GetMapping("/")
     fun getList(): List<DishInfoDTO> {
         return dishToDTOConverter.convert(dishService.get())
     }
 
-    @PostMapping
+    @PostMapping("/")
     fun add(@RequestBody dish: Dish): DishInfoDTO {
         return dishToDTOConverter.convert(dishService.add(dish))
     }

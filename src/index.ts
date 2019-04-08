@@ -15,8 +15,8 @@ let v = new Vue({
     router,
     template: `
     <div>
-    <button @click="dishes">Dishes</button>
-    <button @click="ingredients">Ingredients</button>
+    <button class="button" @click="dishes">Dishes</button>
+    <button class="button" @click="ingredients">Ingredients</button>
     <router-view></router-view>
     </div>
     `,

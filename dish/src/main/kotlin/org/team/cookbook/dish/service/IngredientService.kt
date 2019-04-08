@@ -13,6 +13,6 @@ interface IngredientService {
     @RequestMapping(value = ["/{id}"], method = [RequestMethod.GET])
     fun getById(@PathVariable("id") id: String): IngredientInfoDTO
 
-    @RequestMapping(value = ["/list"], params = ["ids"], method = [RequestMethod.GET])
+    @RequestMapping(value = ["/ipc/list"], params = ["ids"], method = [RequestMethod.GET])
     fun getList(@RequestParam("ids") ids: Collection<String>): List<IngredientInfoDTO>
 }

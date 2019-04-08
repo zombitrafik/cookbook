@@ -10,5 +10,7 @@ data class Dish(
         var name: String,
         var description: String,
         var calories: Int,
-        var ingredients: List<Ingredient>
+        var ingredients: List<Ingredient>,
+        var image:String,
+        var preparationInstructions: String
 )

@@ -13,6 +13,6 @@ interface DishService {
     @RequestMapping(value = ["/{id}"], method = [RequestMethod.GET])
     fun getById(@PathVariable("id") id: String): DishInfoDTO
 
-    @RequestMapping(value = ["/list"], params = ["ids"], method = [RequestMethod.GET])
+    @RequestMapping(value = ["/ipc/list"], params = ["ids"], method = [RequestMethod.GET])
     fun getList(@RequestParam("ids") ids: Collection<String>): List<DishInfoDTO>
 }

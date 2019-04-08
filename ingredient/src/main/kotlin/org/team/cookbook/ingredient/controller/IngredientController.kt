@@ -13,9 +13,15 @@ class IngredientController {
     @Autowired
     private lateinit var ingredientService: IngredientService
 
-    @GetMapping("/list")
+    @GetMapping("/ipc/list")
     fun getList(@RequestParam ids:List<String>): List<Ingredient> {
         return ingredientService.get(ids)
+    }
+
+    @GetMapping("/{ingredientId}")
+    fun getList(@PathVariable ingredientId:String): Ingredient {
+        return ingredientService.get(ingredientId)
+                .orElseThrow { RuntimeException("ingredient not found") }
     }
 
     @GetMapping("/")

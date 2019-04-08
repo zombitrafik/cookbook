@@ -17,7 +17,9 @@ class DishToInfoDTOConverter : Converter<Dish, DishInfoDTO> {
                 source.name,
                 source.description,
                 source.calories,
-                ingredientService.getList(source.ingredients.map { it.id })
+                ingredientService.getList(source.ingredients.map { it.id }),
+                source.image,
+                source.preparationInstructions
         )
     }
 
@@ -30,7 +32,9 @@ class DishToInfoDTOConverter : Converter<Dish, DishInfoDTO> {
                     it.name,
                     it.description,
                     it.calories,
-                    it.ingredients.map { ingr -> ingredientsMap[ingr.id] }
+                    it.ingredients.map { ingr -> ingredientsMap[ingr.id] },
+                    it.image,
+                    it.preparationInstructions
             )
         }
     }

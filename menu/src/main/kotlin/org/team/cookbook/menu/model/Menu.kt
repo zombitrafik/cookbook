@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Menu(
         @Id
         var id:String? = null,
-        var dishes: List<Dish>
+        var dishes: MutableList<Dish>
 )

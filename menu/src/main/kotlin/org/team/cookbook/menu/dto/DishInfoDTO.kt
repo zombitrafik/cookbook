@@ -5,5 +5,6 @@ data class DishInfoDTO(
         var name: String,
         var description: String,
         var calories: Int,
-        var count:Int
+        var count:Int,
+        var image: String
 )

@@ -6,6 +6,7 @@ import org.team.cookbook.menu.converter.MenuToInfoDTOConverter
 import org.team.cookbook.menu.dto.MenuInfoDTO
 import org.team.cookbook.menu.model.Menu
 import org.team.cookbook.menu.service.MenuService
+import java.lang.RuntimeException
 
 
 @RestController
@@ -17,9 +18,11 @@ class MenuController{
     @Autowired
     private lateinit var converter: MenuToInfoDTOConverter
 
-    @GetMapping("/")
-    fun getList(): List<MenuInfoDTO> {
-        return converter.convert(menuService.get())
+    @GetMapping("/{menuId}")
+    fun getList(@PathVariable menuId:String): MenuInfoDTO {
+        return converter.convert(menuService.get(menuId)
+                .orElseThrow { RuntimeException("menu not found") }
+        )
     }
 
     @PostMapping("/")

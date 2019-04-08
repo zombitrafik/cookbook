@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service
 import org.team.cookbook.menu.model.Dish
 import org.team.cookbook.menu.model.Menu
 import org.team.cookbook.menu.repository.MenuRepository
+import java.util.*
 
 @Service
 class MenuService {
@@ -12,8 +13,8 @@ class MenuService {
     @Autowired
     private lateinit var menuRepository: MenuRepository
 
-    fun get(): List<Menu> {
-        return menuRepository.findAll()
+    fun get(menuId:String): Optional<Menu> {
+        return menuRepository.findById(menuId)
     }
 
     fun add(menu: Menu): Menu {

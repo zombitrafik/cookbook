@@ -9,5 +9,6 @@ data class Ingredient(
         var id: String? = null,
         var name: String,
         var description: String,
-        var calories: Int
+        var calories: Int,
+        var image: String
 )

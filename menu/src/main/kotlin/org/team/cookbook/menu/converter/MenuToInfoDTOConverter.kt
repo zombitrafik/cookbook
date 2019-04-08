@@ -12,9 +12,13 @@ class MenuToInfoDTOConverter : Converter<Menu, MenuInfoDTO> {
     private lateinit var dishService: DishService
 
     override fun convert(source: Menu): MenuInfoDTO {
+        var dishesMap = source.dishes.map{it.id to it.count }.toMap()
+
+        val targetDishes = dishService.getList(dishesMap.keys)
+        targetDishes.forEach { it.count = dishesMap[it.id] ?:0 }
         return MenuInfoDTO(
                 source.id?:"",
-                dishService.getList(source.dishes.map { it.id })
+                targetDishes
         )
     }
 

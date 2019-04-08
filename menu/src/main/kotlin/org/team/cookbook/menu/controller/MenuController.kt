@@ -3,6 +3,7 @@ package org.team.cookbook.menu.controller
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import org.team.cookbook.menu.converter.MenuToInfoDTOConverter
+import org.team.cookbook.menu.dto.IngredientInfoDTO
 import org.team.cookbook.menu.dto.MenuInfoDTO
 import org.team.cookbook.menu.model.Menu
 import org.team.cookbook.menu.service.MenuService
@@ -40,6 +41,11 @@ class MenuController{
     fun update(@PathVariable menuId: String, @RequestBody menu: Menu): MenuInfoDTO {
         menu.id=menuId
         return converter.convert(menuService.save(menu))
+    }
+
+    @GetMapping("/{menuId}/aggregate")
+    fun aggregateIngredients(@PathVariable menuId: String): List<IngredientInfoDTO?> {
+        return menuService.aggregate(menuId);
     }
 }
 

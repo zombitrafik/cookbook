@@ -6,5 +6,6 @@ data class IngredientInfoDTO(
         var name: String,
         var description: String,
         var calories: Int,
-        var image: String
+        var image: String,
+        var weight: Int
 )

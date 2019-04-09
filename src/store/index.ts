@@ -55,6 +55,10 @@ export default {
         },
         async UPDATE_PRODUCT(context: any, payload: any): Promise<any> {
             await Axios.put(`http://82.209.201.172:9003/products/${payload.id}`, payload);
-        }
+        },
+        async GET_PRODUCT_BY_ID(context: any, id: any): Promise<any> {
+            const {data: product} = await Axios.get(`http://82.209.201.172:9003/products/${id}`);
+            return product;
+        },
     }
 };

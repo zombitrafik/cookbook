@@ -18,17 +18,13 @@
                         <td><textarea cols="30" rows="10" v-model="description"></textarea></td>
                     </tr>
                     <tr>
-                        <td>Weight</td>
-                        <td><input type="number" v-model="weight"> gr.</td>
-                    </tr>
-                    <tr>
                         <td>Price</td>
                         <td><input type="number" v-model="price"> $</td>
                     </tr>
                     <tr>
                         <td>Ingredient</td>
                         <td>
-                            <select v-model="ingredient">
+                            <select v-model="ingredientId">
                                 <option v-for="ingredient in ingredients" v-bind:value="ingredient.id">
                                     {{ ingredient.name }}
                                 </option>
@@ -52,9 +48,8 @@
         image: String | null = null;
         name: String = '';
         description: String = '';
-        weight: Number = 0;
         price: Number = 0;
-        ingredient: String | null = null;
+        ingredientId: String | null = null;
 
         get ingredients() {
             return this.$store.state.ingredients;
@@ -65,9 +60,8 @@
                 name: this.name,
                 image: this.image,
                 description: this.description,
-                weight: this.weight,
                 price: this.price,
-                ingredient: this.ingredient
+                ingredientId: this.ingredientId
             };
             await this.$store.dispatch('CREATE_PRODUCT', product);
             this.$router.push({name: 'products'});
@@ -76,7 +70,7 @@
         async mounted() {
             await this.$store.dispatch('GET_INGREDIENTS');
             if(this.ingredients.length > 0) {
-                this.ingredient = this.ingredients[0].id;
+                this.ingredientId = this.ingredients[0].id;
             }
         }
     }

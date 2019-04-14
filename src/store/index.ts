@@ -32,6 +32,14 @@ export default {
         },
         async ADD_DISH_TO_MENU(context: any, payload: any): Promise<any> {
             await Axios.post(`http://82.209.201.172:9003/menus/${payload.menuId}/${payload.dishId}`);
+        },
+        async GET_MENU_INGREDIENTS(context: any, id: any): Promise<any> {
+            const {data: ingredients} = await Axios.get(`http://82.209.201.172:9003/menus/${id}/aggregate`,);
+            return ingredients;
+        },
+        async GET_INGREDIENT_PRODUCTS(context: any, id: any): Promise<any> {
+            const {data: products} = await Axios.get(`http://82.209.201.172:9003/products?ingredientId=${id}`,);
+            return products;
         }
     }
 };

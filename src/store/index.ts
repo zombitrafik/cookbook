@@ -15,30 +15,30 @@ export default {
     },
     actions: {
         async GET_DISHES(context: any): Promise<any> {
-            const {data: dishes} = await Axios.get('http://82.209.201.172:9003/dishes');
+            const {data: dishes} = await Axios.get('/api/dishes');
             context.commit('SET_DISHES', dishes);
         },
         async GET_PRODUCTS(context: any): Promise<any> {
-            const {data: products} = await Axios.get('http://82.209.201.172:9003/products');
+            const {data: products} = await Axios.get('/api/products');
             context.commit('SET_PRODUCTS', products);
         },
         async CREATE_MENU(context: any, payload: any): Promise<any> {
-            const {data: menu} = await Axios.post('http://82.209.201.172:9003/menus', payload);
+            const {data: menu} = await Axios.post('/api/menus', payload);
             return menu.id;
         },
         async GET_MENU_BY_ID(context: any, id: any): Promise<any> {
-            const {data: menu} = await Axios.get(`http://82.209.201.172:9003/menus/${id}`);
+            const {data: menu} = await Axios.get(`/api/menus/${id}`);
             return menu;
         },
         async ADD_DISH_TO_MENU(context: any, payload: any): Promise<any> {
-            await Axios.post(`http://82.209.201.172:9003/menus/${payload.menuId}/${payload.dishId}`);
+            await Axios.post(`/api/menus/${payload.menuId}/${payload.dishId}`);
         },
         async GET_MENU_INGREDIENTS(context: any, id: any): Promise<any> {
-            const {data: ingredients} = await Axios.get(`http://82.209.201.172:9003/menus/${id}/aggregate`,);
+            const {data: ingredients} = await Axios.get(`/api/menus/${id}/aggregate`,);
             return ingredients;
         },
         async GET_INGREDIENT_PRODUCTS(context: any, id: any): Promise<any> {
-            const {data: products} = await Axios.get(`http://82.209.201.172:9003/products?ingredientId=${id}`,);
+            const {data: products} = await Axios.get(`/api/products?ingredientId=${id}`,);
             return products;
         }
     }

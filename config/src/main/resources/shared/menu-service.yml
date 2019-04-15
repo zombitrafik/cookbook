@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: menu-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:9031/menu

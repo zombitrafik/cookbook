@@ -1,0 +1,127 @@
+version: "2"
+
+services:
+
+  config:
+    build: config
+    restart: always
+    ports:
+      - 9001:8080
+
+  discovery:
+    build: eureka
+    restart: always
+    depends_on:
+      - config
+    ports:
+      - 9002:8080
+
+  gateway:
+    build: gateway
+    restart: always
+    depends_on:
+      - config
+    ports:
+      - 9003:8080
+    environment:
+     - "SPRING_PROFILES_ACTIVE=docker"
+
+  ingredient:
+    build: ingredient
+    restart: always
+    depends_on:
+      - config
+      - ingredient_mongo
+    ports:
+     - "9010:8080"
+    environment:
+     - "SPRING_PROFILES_ACTIVE=docker"
+
+  ingredient_mongo:
+    container_name: ingredient_mongo
+    image: mongo:4.0.5
+    ports:
+    - "9011:27017"
+    volumes:
+    - ./containerdata/mongo/ingredient:/data
+
+  dish:
+    build: dish
+    restart: always
+    depends_on:
+      - config
+      - dish_mongo
+    ports:
+     - "9020:8080"
+    environment:
+     - "SPRING_PROFILES_ACTIVE=docker"
+
+  dish_mongo:
+    container_name: dish_mongo
+    image: mongo:4.0.5
+    ports:
+    - "9021:27017"
+    volumes:
+    - ./containerdata/mongo/dish:/data
+
+  menu:
+    build: menu
+    restart: always
+    depends_on:
+      - config
+      - menu_mongo
+    ports:
+     - "9030:8080"
+    environment:
+     - "SPRING_PROFILES_ACTIVE=docker"
+
+  menu_mongo:
+    container_name: menu_mongo
+    image: mongo:4.0.5
+    ports:
+    - "9031:27017"
+    volumes:
+    - ./containerdata/mongo/menu:/data
+
+  product:
+    build: product
+    restart: always
+    depends_on:
+      - config
+      - product_mongo
+    ports:
+     - "9040:8080"
+    environment:
+     - "SPRING_PROFILES_ACTIVE=docker"
+
+  product_mongo:
+    container_name: product_mongo
+    image: mongo:4.0.5
+    ports:
+    - "9041:27017"
+    volumes:
+    - ./containerdata/mongo/product:/data
+
+  site_nginx:
+    container_name: site_nginx
+    image: nginx
+    ports:
+    - "9050:9050"
+    volumes:
+    - ./containerdata/nginx/site:/etc/nginx/html/:ro
+    - ./site_nginx.conf:/etc/nginx/nginx.conf
+    - ./logs:/var/log/nginx/site
+    depends_on:
+      - gateway
+
+  admin_nginx:
+    container_name: admin_nginx
+    image: nginx
+    ports:
+    - "9060:9060"
+    volumes:
+    - ./containerdata/nginx/admin:/etc/nginx/html:ro
+    - ./admin_nginx.conf:/etc/nginx/nginx.conf
+    - ./logs:/var/log/nginx/admin
+    depends_on:
+      - gateway
